@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreateUser() {
+  const navigate = useNavigate();
+
   const [inputs, setInputs] = useState({});
 
   const handleChange = (event) => {
@@ -16,7 +19,12 @@ function CreateUser() {
 
     event.preventDefault();
 
-    axios.post("http://localhost:8888/reactcrud/user/save", inputs);
+    axios
+      .post("http://localhost:8888/reactcrud/user/save", inputs)
+      .then((res) => {
+        console.log(res.data);
+        navigate("/");
+      });
     console.log(inputs);
   };
 
