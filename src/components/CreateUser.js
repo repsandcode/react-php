@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function CreateUser() {
@@ -7,15 +7,22 @@ function CreateUser() {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ [name]: value, ...values }));
+    setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
+    console.log(inputs);
   };
 
   const handleSubmit = (event) => {
+    console.log(inputs);
+
     event.preventDefault();
 
     axios.post("http://localhost:8888/reactcrud/user/save", inputs);
     console.log(inputs);
   };
+
+  useEffect(() => {
+    console.log(inputs);
+  }, [inputs]);
 
   return (
     <div>
@@ -23,21 +30,11 @@ function CreateUser() {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            onChange={handleChange}
-          ></input>
+          <input type="text" name="name" id="name" onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            onChange={handleChange}
-          ></input>
+          <input type="email" name="email" id="email" onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="mobile">Mobile: </label>
@@ -46,7 +43,7 @@ function CreateUser() {
             name="mobile"
             id="mobile"
             onChange={handleChange}
-          ></input>
+          />
         </div>
         <button type="submit">Save</button>
       </form>
