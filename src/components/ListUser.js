@@ -16,6 +16,15 @@ function ListUser() {
     });
   };
 
+  const deleteUser = (id) => {
+    axios
+      .delete(`http://localhost:8888/reactcrud/user/${id}/delete`)
+      .then((res) => {
+        console.log(res.data);
+        getUsers();
+      });
+  };
+
   return (
     <div>
       <h1>List Users</h1>
@@ -39,7 +48,7 @@ function ListUser() {
               <td>{user.mobile}</td>
               <td>
                 <Link to={`user/${user.id}/edit`}>Edit</Link>
-                <button>Delete</button>
+                <button onClick={() => deleteUser(user.id)}>Delete</button>
               </td>
             </tr>
           ))}
