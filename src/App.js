@@ -21,11 +21,14 @@ function App() {
             </li>
           </ul>
         </nav>
-        <Routes>
-          <Route index element={<ListUser />} />
-          <Route path="/user/create" element={<CreateUser />} />
-          <Route path="/user/:id/edit" element={<EditUser />} />
-        </Routes>
+
+        <div className="center">
+          <Routes>
+            <Route index element={<ListUser />} />
+            <Route path="/user/create" element={<CreateUser />} />
+            <Route path="/user/:id/edit" element={<EditUser />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );
