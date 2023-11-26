@@ -41,7 +41,7 @@ function ListUser() {
 
         <tbody>
           {users.map((user, key) => (
-            <tr key={key}>
+            <tr key={key} className="px-3">
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
