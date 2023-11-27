@@ -41,12 +41,12 @@ function ListUser() {
 
         <tbody>
           {users.map((user, key) => (
-            <tr key={key} className="px-3">
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.mobile}</td>
-              <td>
+            <tr key={key}>
+              <td className="p-3">{user.id}</td>
+              <td className="p-3">{user.name}</td>
+              <td className="p-3">{user.email}</td>
+              <td className="p-3">{user.mobile}</td>
+              <td className="p-3">
                 <Link to={`user/${user.id}/edit`}>Edit</Link>
                 <button onClick={() => deleteUser(user.id)}>Delete</button>
               </td>
