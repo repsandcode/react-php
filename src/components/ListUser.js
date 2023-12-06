@@ -26,7 +26,7 @@ function ListUser() {
   };
 
   return (
-    <div cl>
+    <div>
       <h1>List Users</h1>
       <table>
         <thead>
